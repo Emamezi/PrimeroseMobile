@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         title: 'PrimeRoase Mobile',
         theme: ThemeData(
             appBarTheme: AppBarTheme(
-          color: Colors.teal,
+          color: Colors.blue,
         )),
         home: PlaceListView(),
         routes: {
