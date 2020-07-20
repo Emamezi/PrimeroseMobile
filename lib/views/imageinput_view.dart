@@ -19,16 +19,19 @@ class _ImageInputState extends State<ImageInput> {
       source: ImageSource.camera,
       maxWidth: 600,
     );
+    //handling error of user not taking an image upon activating camera
+    if (imageFile == null) {
+      return;
+    }
     setState(() {
       _storedImage = File(imageFile.path);
     });
     // storing the image on the device file system
     final appDirectory = await syspaths.getApplicationDocumentsDirectory();
+    //getting the image name that the image picker automatically assigned
     final fileName = path.basename(imageFile.path);
     final savedImage =
         await _storedImage.copy('${appDirectory.path}/$fileName');
-    print(imageFile.path);
-    print(savedImage.path);
     widget.onSelectImage(savedImage);
   }
 
@@ -37,16 +40,16 @@ class _ImageInputState extends State<ImageInput> {
     return Row(
       children: <Widget>[
         Container(
-          height: 200,
-          width: 200,
-          alignment: Alignment(0.0,0.0),
+          height: 150,
+          width: 150,
+          alignment: Alignment(0.0, 0.0),
           decoration: BoxDecoration(
-            border: Border.all(width: 1.0, color: Colors.grey),
+            border: Border.all(width: 0.5, color: Colors.grey),
             borderRadius: BorderRadius.circular(10),
           ),
           child: _storedImage != null
               ? ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(6),
                   child: Image.file(
                     _storedImage,
                     fit: BoxFit.cover,

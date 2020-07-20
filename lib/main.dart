@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:primerose_mobile/views/place_detail_view.dart';
 import './provider/places.dart';
 import './views/placeinput_view.dart';
 import './views/placelist_view.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         home: PlaceListView(),
         routes: {
           PlaceInputView.routeName: (ctx) => PlaceInputView(),
+          PlaceDetailView.routeName: (ctx) => PlaceDetailView(),
         },
       ),
     );
